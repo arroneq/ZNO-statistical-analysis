@@ -1,0 +1,12 @@
+\Excel data
+\opendatazno2019.csv
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+.vscode/ltex.disabledRules.uk-UA.txt
+.vscode/ltex.hiddenFalsePositives.uk-UA.txt

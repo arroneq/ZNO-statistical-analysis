@@ -1,0 +1,143 @@
+% !TeX program = pdflatex
+% !TeX encoding = utf8
+
+\documentclass[a4paper,14pt]{extarticle} % the default "article" class is limited to 12pt, but you can
+                                         % go up to 14, 17 or 20 points if you use the "extarticle" class
+\usepackage{cmap} % make LaTeX PDF output copy-and-pasteable
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,ukrainian]{babel}
+
+\usepackage{amssymb, amsfonts, mathtools, amsmath, enumerate}
+\usepackage{indentfirst} % set an additional space before a paragraph at the begining of a new section
+\usepackage{setspace}
+\usepackage{textcomp}
+
+\usepackage{dsfont} % indicator symbol
+\usepackage{leftidx} % this package enables left subscripts and superscripts in math mode
+
+\usepackage{import} % for adding a file by path https://tex.stackexchange.com/questions/246/when-should-i-use-input-vs-include
+
+\usepackage{geometry} 
+\geometry{left=1.25cm}
+\geometry{right=1.25cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\setlength{\arrayrulewidth}{0.3mm} % this sets the thickness of the borders of the table
+\setlength{\tabcolsep}{12pt} % the space between the text and the left/right border of its containing cell is set to 18pt with this command
+\renewcommand{\arraystretch}{1.5} % the height of each row is set to 1.5 relative to its default height
+
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{color}
+% 1) tutorial about xcolor:  https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX
+% 2) huge tutorial about xcolor: https://latex-tutorial.com/color-latex/ 
+% 3) RGB calculator: https://www.w3schools.com/colors/colors_rgb.asp
+
+\usepackage{hyperref}
+\definecolor{linkcolor}{HTML}{0000FF}
+\definecolor{urlcolor}{HTML}{0000FF} 
+\hypersetup{pdfstartview=FitH, unicode=true, linkcolor=linkcolor, urlcolor=urlcolor, colorlinks=true}
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+
+\parskip=1mm % space between paragraphs
+
+% enumerating equations according to the section number 
+% plus resetting each numeration inside each section
+\numberwithin{equation}{section}
+
+% numbering only sections in the table of contents (the "1" nesting level)
+% thus numbering equations only according to the section number
+\setcounter{secnumdepth}{1}
+
+\usepackage{listingsutf8} % origin: \usepackage{listings}
+
+\lstset{
+    frame=single,
+    language=Python,
+    aboveskip=3mm,
+    belowskip=3mm,
+    columns=flexible,
+    basicstyle=\small\ttfamily,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    commentstyle=\color{OliveGreen},
+    stringstyle=\color{Mahogany},
+    morestring=[b]''',
+    showstringspaces=false,
+    keywordstyle=\bfseries\color{blue},
+    emph={[1]import, as, for, while, return}, emphstyle={[1]\bfseries\color{Mulberry}},
+    emph={[2]range}, emphstyle={[2]\bfseries\color{brown}},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4,
+    extendedchars=false, % to use ukrainian text in a code
+    inputencoding=utf8 % to use ukrainian text in a code
+}
+
+\begin{document}
+
+\import{Title/}{title}
+
+\tableofcontents
+
+\newpage
+\import{LaTeX uploading data/}{ZNO_data}
+
+\newpage
+\import{LaTeX UKR/}{ZNO_ukr}
+
+\newpage
+\import{LaTeX MATH/}{ZNO_math}
+
+\newpage
+\import{LaTeX ENG/}{ZNO_eng}
+
+\newpage
+\section*{Загальний висновок}
+\addcontentsline{toc}{section}{Загальний висновок}
+
+Метою статистичного аналізу було з'ясувати, чи є значущою відмінність між балами ЗНО для чоловіків 
+та жінок. При цьому розглядалися результати трьох різних предметів: української мови, математики та 
+англійської мови.
+
+\subsection*{Українська мова}
+
+Шляхом побудови довірчого інтервалу рівня довіри $\gamma=0.95$ було виявлено, що можливі значення різниці середніх балів 
+жінок та чоловіків лежать у проміжку в $12.08\pm 0.2$ пункти, що свідчить про значне перевищення середніх
+оцінок жінок у порівнянні з оцінками чоловіків. При цьому статистична похибка обчислень складає лише $0.21$ 
+пункти. 
+
+В свою чергу при заданій ймовірності помилки 1-го роду $\alpha=0.01$ гіпотеза однорідності даних відхиляється, 
+що вказує на неоднаковість розподілу балів за трьома обраними категоріями оцінок \eqref{formula: marks level} 
+в залежності від статі.
+
+Наостанок зауважимо, що для знормованих вибірок величина дисперсії в середньому лише у п'яти 
+елементів вибірки зі ста виходить за межі проміжку від $1.32$ до $1.68$ балів.
+
+\subsection*{Математика та англійська мова}
+
+У випадку аналізу балів з математики та англійської мови за аналогічного рівня довіри встановлено дещо інші 
+довірчі інтервали для різниці середніх оцінок різних статей: $0.94\pm 0.3$ для математики та $1.94\pm 0.42$ 
+для англійської мови. Статистичні похибки обчислень при цьому складають лише $0.3$ та $0.42$ пункти відповідно. 
+
+Для обох предметів гіпотеза однорідності даних приймається, а отже, оскільки поділ на різні категорії оцінок 
+\eqref{formula: marks level} базувався на прохідних балах факультетів КПІ, то в такому разі університет може 
+очікувати, що частки новоприбулих хлопців та дівчат із високими, помірними й низькими балами будуть приблизно 
+однаковими.
+
+Наприкінці зазначимо, що для знормованих вибірок величина дисперсії в середньому лише у п'яти елементів 
+вибірки зі ста виходить за межі проміжку $(1.39,\ 1.94)$ балів у випадку математики й $(2.22,\ 3.20)$ балів у 
+випадку англійської мови.
+
+\subsection*{Завершальне слово}
+
+Отже, як результат статистичного аналізу можна стверджувати, що для усіх трьох предметів відмінність середніх 
+результатів ЗНО в залежності від статі є статистично значущою, причому при порівнянні середніх оцінок жінки 
+та чоловіка оцінка у жінки виявиться вищою за оцінку у чоловіка для кожного з трьох предметів (українська мова, 
+математика та англійська мова).
+
+\end{document}
